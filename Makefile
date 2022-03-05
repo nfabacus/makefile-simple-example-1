@@ -6,7 +6,7 @@ all: test test2
 VAR1 = "testing"
 VAR2 = "testing"
 TARGET_BRANCH = "main"
-CURRENT_BRANCH = $(shell git rev-parse --abbrev-ref HEAD)
+CURRENT_BRANCH = "$(shell git rev-parse --abbrev-ref HEAD)"
 
 test:
 	$(info hello world)
@@ -15,6 +15,6 @@ test:
 test2:
 	echo "current branch is $(CURRENT_BRANCH)"
 	@if [ "$(CURRENT_BRANCH)" != "$(TARGET_BRANCH)" ]; then \
-		git checkout $TARGET_BRANCH; \
+		git checkout $(TARGET_BRANCH); \
 	fi
 	echo "finished"
